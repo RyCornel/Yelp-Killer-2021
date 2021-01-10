@@ -16,6 +16,7 @@
 		709CB4FB25AAC77700C199A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 709CB4F925AAC77700C199A1 /* LaunchScreen.storyboard */; };
 		709CB50625AAC77700C199A1 /* Yelp_Killer_2021Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709CB50525AAC77700C199A1 /* Yelp_Killer_2021Tests.swift */; };
 		709CB51125AAC77700C199A1 /* Yelp_Killer_2021UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709CB51025AAC77700C199A1 /* Yelp_Killer_2021UITests.swift */; };
+		709CB52325AADFEB00C199A1 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709CB52225AADFEB00C199A1 /* Dish.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		709CB50C25AAC77700C199A1 /* Yelp-Killer-2021UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yelp-Killer-2021UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		709CB51025AAC77700C199A1 /* Yelp_Killer_2021UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yelp_Killer_2021UITests.swift; sourceTree = "<group>"; };
 		709CB51225AAC77700C199A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		709CB52225AADFEB00C199A1 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		709CB4EA25AAC77400C199A1 /* Yelp-Killer-2021 */ = {
 			isa = PBXGroup;
 			children = (
+				709CB52125AADD1900C199A1 /* Model */,
 				709CB4EB25AAC77400C199A1 /* AppDelegate.swift */,
 				709CB4ED25AAC77400C199A1 /* SceneDelegate.swift */,
 				709CB4EF25AAC77400C199A1 /* ContentView.swift */,
@@ -137,6 +140,14 @@
 				709CB51225AAC77700C199A1 /* Info.plist */,
 			);
 			path = "Yelp-Killer-2021UITests";
+			sourceTree = "<group>";
+		};
+		709CB52125AADD1900C199A1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				709CB52225AADFEB00C199A1 /* Dish.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				709CB4EC25AAC77400C199A1 /* AppDelegate.swift in Sources */,
+				709CB52325AADFEB00C199A1 /* Dish.swift in Sources */,
 				709CB4F325AAC77400C199A1 /* Yelp_Killer_2021.xcdatamodeld in Sources */,
 				709CB4EE25AAC77400C199A1 /* SceneDelegate.swift in Sources */,
 				709CB4F025AAC77400C199A1 /* ContentView.swift in Sources */,
