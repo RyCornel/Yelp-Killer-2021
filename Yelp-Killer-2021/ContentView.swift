@@ -10,23 +10,38 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack(alignment: .leading) {
+            Image("waves")
+                .resizable()
+                .frame(width: 75.0, height: 75.0)
             Text("Hello, world!")
                 .padding()
             
         }
-        VStack {
+        VStack(alignment: .leading) {
+            Image("waves")
+                .resizable()
+                .frame(width: 75.0, height: 75.0)
             Text("Hello, world!")
                 .padding()
         }
-        VStack {
+        VStack(alignment: .leading) {
+            Image("waves")
+                .resizable()
+                .frame(width: 75.0, height: 75.0)
             Text("Hello, world!")
                 .padding()
         }
-        VStack {
+        VStack(alignment: .leading) {
+            Image("waves")
+                .resizable()
+                .frame(width: 75.0, height: 75.0)
             Text("Hello, world!")
                 .padding()
         }
-        VStack {
+        VStack(alignment: .leading) {
+            Image("waves")
+                .resizable()
+                .frame(width: 75.0, height: 75.0)
             Text("Hello, world!")
                 .padding()
         }
