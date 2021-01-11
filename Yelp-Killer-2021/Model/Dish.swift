@@ -10,5 +10,6 @@ import SwiftUI
 struct Dish: Identifiable {
     var id: Int
     var dish: String
+    var spot: String
     
 }

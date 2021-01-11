@@ -8,64 +8,42 @@
 import SwiftUI
 
 struct ListView: View {
+    var topDishes: [Dish]
     var body: some View {
-        DishView()
+        NavigationView{
+            List(newDishes){
+            Dish in DishView(eachDish: Dish)
+        }.navigationBarTitle(Text("Top 5 Dishes Near You"))
+        }
     }
 }
 
 struct DishView: View {
-            var body: some View {
+    var eachDish: Dish
+    var body: some View {
                 HStack() {
                     Image("waves")
                         .resizable()
                         .frame(width: 75.0, height: 75.0)
-                    Text("Hello, world!")
+                    Text(eachDish.dish)
                         .padding()
                     
-                }
-                HStack() {
-                    Image("waves")
-                        .resizable()
-                        .frame(width: 75.0, height: 75.0)
-                    Text("Hello, world!")
-                        .padding()
-                }
-                HStack() {
-                    Image("waves")
-                        .resizable()
-                        .frame(width: 75.0, height: 75.0)
-                    Text("Hello, world!")
-                        .padding()
-                }
-                HStack() {
-                    Image("waves")
-                        .resizable()
-                        .frame(width: 75.0, height: 75.0)
-                    Text("Hello, world!")
-                        .padding()
-                }
-                HStack() {
-                    Image("waves")
-                        .resizable()
-                        .frame(width: 75.0, height: 75.0)
-                    Text("Hello, world!")
-                        .padding()
                 }
             }
             
         }
 
 var newDishes = [
-    Dish(id: 1, name: "Burrito")
-    Dish(id: 2, name: "Sushi")
-    Dish(id: 3, name: "Burger")
-    Dish(id: 4, name: "Pizza")
-    Dish(id: 5, name: "Chowmein")
+    Dish(id: 1, dish: "Burrito", spot:""),
+    Dish(id: 2, dish: "Sushi", spot:""),
+    Dish(id: 3, dish: "Burger", spot:""),
+    Dish(id: 4, dish: "Pizza", spot:""),
+    Dish(id: 5, dish: "Chowmein", spot:"")
 ]
 
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView()
+        ListView(topDishes: newDishes)
     }
 }
