@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import Combine
 
 struct Dish: Identifiable {
     var id: Int
     var dish: String
     var spot: String
     
+}
+
+class DishStore : ObservableObject {
+    @Published var dishes = [Dish]()
 }
