@@ -11,13 +11,15 @@ import Combine
 struct ContentView: View {
     @ObservedObject var dishStore = DishStore()
     @State var newDish : String = ""
+    @State var newSpot : String = ""
     
     var body: some View {
         NavigationView {
             VStack {
                 List(self.dishStore.dishes) { aDish in
                     Text(aDish.dish)
-                } .navigationTitle("Top 5 Dishes Near You")
+                    Text(aDish.spot)
+                } .navigationTitle("Top Dishes Near You")
                 searchBar
             }
         }
@@ -25,16 +27,19 @@ struct ContentView: View {
     
     var searchBar: some View {
         HStack {
-            TextField("Enter A New Dish", text: self.$newDish)
-            TextField("Enter The Venue", text: self.$newDish)
+            TextField("Enter A Dish", text: self.$newDish)
+                .padding()
+            TextField("Enter The Venue", text: self.$newSpot)
             Button(action: self.addNewDish, label: {
                 Text("Add")
+                    .padding()
             })
             
         }
     }
     
     func addNewDish() {
+        dishStore.dishes.append(Dish(id: String(dishStore.dishes.count + 1), dish: newDish, spot: newSpot))
         
     }
 }

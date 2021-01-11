@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct Dish: Identifiable {
-    var id: Int
+    var id: String
     var dish: String
     var spot: String
     
