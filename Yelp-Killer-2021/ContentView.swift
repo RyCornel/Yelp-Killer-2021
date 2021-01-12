@@ -16,48 +16,47 @@ struct ContentView: View {
     @State var newSpot : String = ""
     @State var posCount : Int = 0
     @State var negCount : Int = 0
+    @State var showMap = false
     
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     
     var body: some View {
         NavigationView {
+            ZStack {
             VStack(alignment: .leading) {
                 List(self.dishStore.dishes) { aDish in
+                    
                     Text(aDish.dish)
                         .font(.headline)
                         .fontWeight(.bold)
                         .foregroundColor(Color.black)
                         .multilineTextAlignment(.leading)
                         .scaledToFill()
+                    
                     Text(aDish.spot)
                         .font(.headline)
                         .fontWeight(.bold)
                         .foregroundColor(Color.black)
                         .multilineTextAlignment(.leading)
                         .scaledToFill()
-                        Map(coordinateRegion: $region)
-                    Button(action:
-                        {posCount += 1}, label: {
+                    Button(action: {self.showMap.toggle()}, label: {
+                            Map(coordinateRegion: $region)
+                    })
+                    .sheet(isPresented: $showMap, content: {
+                        MapView()
+                    })
+            
+                   /* Button(action: {voteUp(); self.showMap.toggle() }, label: {
+                            Text("Vote Up")
                             Text(" \(posCount) Likes")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.black)
-                                .multilineTextAlignment(.leading)
-                                .scaledToFill()
-                        })
-                        Text("Vote Up")
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.black)
-                            .multilineTextAlignment(.leading)
-                            .scaledToFill()
-                    
+                    }) */
                     }
                      .navigationTitle("Top Dishes Near You")
                                     searchBar
             } 
         }
     }
+}
     
     var searchBar: some View {
         HStack {
@@ -78,6 +77,10 @@ struct ContentView: View {
         self.newDish = ""
         self.newSpot = ""
         
+    }
+    
+    func voteUp() {
+        posCount += 1
     }
 }
 
