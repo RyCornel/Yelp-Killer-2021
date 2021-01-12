@@ -17,6 +17,8 @@ struct ContentView: View {
     @State var posCount : Int = 0
     @State var negCount : Int = 0
     
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -33,36 +35,27 @@ struct ContentView: View {
                         .foregroundColor(Color.black)
                         .multilineTextAlignment(.leading)
                         .scaledToFill()
-                    Text("Likes")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)
-                        .multilineTextAlignment(.leading)
-                        .scaledToFill()
-                    VStack {
-                        Button(action:
-                                {self.posCount += 1}, label: {
-                                    Text("Vote Up \(posCount)")
-                                        .font(.headline)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(Color.black)
-                                        .multilineTextAlignment(.leading)
-                                        .scaledToFit()
-                                })
-                        /*Button(action:
-                                {self.negCount -= 1}, label: {
-                                    Text("Vote Down")
-                                        .font(.headline)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(Color.black)
-                                        .multilineTextAlignment(.leading)
-                                        .scaledToFill()
-                                }) */
+                        Map(coordinateRegion: $region)
+                    Button(action:
+                        {posCount += 1}, label: {
+                            Text(" \(posCount) Likes")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.black)
+                                .multilineTextAlignment(.leading)
+                                .scaledToFill()
+                        })
+                        Text("Vote Up")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.black)
+                            .multilineTextAlignment(.leading)
+                            .scaledToFill()
+                    
                     }
-                    }
- .navigationTitle("Top Dishes Near You")
-                searchBar
-            }
+                     .navigationTitle("Top Dishes Near You")
+                                    searchBar
+            } 
         }
     }
     
@@ -80,8 +73,8 @@ struct ContentView: View {
     }
     
     func addNewDish() {
-        dishStore.dishes.append(Dish(id: String(dishStore.dishes.count + 1), dish: newDish, spot: newSpot))
-        
+        dishStore.dishes.append(Dish(id: Int(dishStore.dishes.count + 1), dish: newDish, spot: newSpot))
+        self.posCount = 0
         self.newDish = ""
         self.newSpot = ""
         
