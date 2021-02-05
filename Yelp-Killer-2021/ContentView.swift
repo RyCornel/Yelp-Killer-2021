@@ -16,9 +16,19 @@ struct ContentView: View {
     @State var newSpot : String = ""
     @State var posCount : Int = 0
     @State var negCount : Int = 0
-    @State var showMap = false
+    
     
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    
+    struct Dishes {
+        let dish: String
+        let venue: String
+        
+        init(dish: String, venue: String) {
+            self.dish = dish
+            self.venue = venue
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -39,17 +49,12 @@ struct ContentView: View {
                         .foregroundColor(Color.black)
                         .multilineTextAlignment(.leading)
                         .scaledToFill()
-                    Button(action: {self.showMap.toggle()}, label: {
-                            Map(coordinateRegion: $region)
-                    })
-                    .sheet(isPresented: $showMap, content: {
-                        MapView()
-                    })
-            
-                   /* Button(action: {voteUp(); self.showMap.toggle() }, label: {
+                    
+                    
+                    Button(action: {voteUp()}, label: {
                             Text("Vote Up")
                             Text(" \(posCount) Likes")
-                    }) */
+                    })
                     }
                      .navigationTitle("Top Dishes Near You")
                                     searchBar
@@ -58,6 +63,8 @@ struct ContentView: View {
     }
 }
     
+    
+
     var searchBar: some View {
         HStack {
             TextField("Enter A Dish", text: self.$newDish)
